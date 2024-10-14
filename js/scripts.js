@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', function() {
     // Variables for common elements
     const cartPopup = document.getElementById('cart-popup');
     const cartLink = document.querySelector('.cart-link');
-    const cartCloseBtn = document.getElementById('cart-close');
+    const cartCloseBtn = document.querySelector('.popup-close');
     const cartItemsContainer = document.querySelector('.cart-items');
     const cartSummary = document.querySelector('.cart-summary');
 
@@ -32,7 +32,7 @@ window.addEventListener('DOMContentLoaded', function() {
     // Add event listeners to quantity buttons in cart items
     const quantityButtons = document.querySelectorAll('.quantity-btn');
     quantityButtons.forEach(function(button) {
-        button.addEventListener('click', function(event) {
+        button.addEventListener('click', function() {
             const input = this.parentElement.querySelector('.quantity-input');
             let currentValue = parseInt(input.value);
             
@@ -62,13 +62,22 @@ window.addEventListener('DOMContentLoaded', function() {
         cartItems.forEach(function(item) {
             const priceElement = item.querySelector('.item-price');
             const quantityInput = item.querySelector('.quantity-input');
-            const price = parseFloat(priceElement.textContent.replace('€', ''));
+            const price = parseFloat(priceElement.textContent.replace('$', ''));
             const quantity = parseInt(quantityInput.value);
             total += price * quantity;
         });
 
-        document.querySelector('.total-price p:last-child').textContent = '€ ' + total.toFixed(2);
-        document.querySelector('.summary-details p:last-child').textContent = '€ ' + total.toFixed(2);
+        // Ensure total price and summary details elements exist before updating
+        const totalPriceElement = document.querySelector('.total-price p:last-child');
+        const summaryDetailsElement = document.querySelector('.summary-details p:last-child');
+
+        if (totalPriceElement) {
+            totalPriceElement.textContent = '$ ' + total.toFixed(2);
+        }
+
+        if (summaryDetailsElement) {
+            summaryDetailsElement.textContent = '$ ' + total.toFixed(2);
+        }
     }
 
     // Add more interactivity for the give code input and shipping options
@@ -83,7 +92,7 @@ window.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Common Popup Handling for Notifications
+    // Common Popup Handling for Notifications (Optional Feature)
     const popup = document.getElementById('popup');
     const popupMessage = document.getElementById('popup-message');
     const popupClose = document.getElementById('popup-close');
@@ -103,7 +112,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     // Close popup when clicking outside the popup content
     window.addEventListener('click', function(event) {
-        if (event.target === popup) {
+        if (popup && event.target === popup) {
             popup.style.display = 'none';
         }
     });
