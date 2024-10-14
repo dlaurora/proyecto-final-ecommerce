@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="index.html">Home Page</a>
+            <a href="shop.html">Shop Now</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="about.html">About Us</a>
+            <a href="faqs.html">FAQs</a>
+        </div>
+        <div class="navbar-center">
+            <img src="assets/images/logoecommerce.png" alt="Logo Image here">
+        </div>
+        <div class="navbar-right">
+            <a href="cart.html" class="cart-link">
+                <!-- Cart Icon (SVG) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 12.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span>Cart</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Contact Form Section -->
+    <div class="container-form">
+        <main class="main-wrapper">
+            <div class="form-container">
+                <h2>Contact Us</h2>
+                <form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/f/xrbzweal" method="post">
+                    <fieldset id="fs-frm-inputs">
+                        <label for="full-name">Full Name</label>
+                        <input type="text" name="name" id="full-name" placeholder="Name / Lastname" required>
+                        
+                        <label for="email-address">Email</label>
+                        <input type="email" name="_replyto" id="email-address" placeholder="email@domain.com" required>
+                        
+                        <label for="message">Add your comments</label>
+                        <textarea rows="5" name="message" id="message" placeholder="Leave us your comments..." required></textarea>
+                        
+                        <input type="hidden" name="_subject" id="email-subject" value="Contacto">
+                    </fieldset>
+                    <input type="submit" value="Send" class="btn-submit">
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="assets/images/logoecommerce.png" alt="Logo Image here">
+            </div>
+            
+            <div class="footer-nav">
+                <a href="index.html">Home Page</a>
+                <a href="shop.html">Shop Now</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="about.html">About Us</a>
+                <a href="faqs.html">FAQs</a>
+            </div>
+            
+            <div class="footer-social">
+                <a href="#"><img src="assets/icons/facebook-icon.svg" alt="Facebook"></a>
+                <a href="#"><img src="assets/icons/instagram-icon.svg" alt="Instagram"></a>
+                <a href="#"><img src="assets/icons/twitter-icon.svg" alt="Twitter"></a>
+                <a href="#"><img src="assets/icons/linkedin-icon.svg" alt="LinkedIn"></a>
+                <a href="#"><img src="assets/icons/youtube-icon.svg" alt="YouTube"></a>
+            </div>
+        </div>
+
+        <!-- Popup Modal -->
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span id="popup-close" class="popup-close">&times;</span>
+                <p id="popup-message"></p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2024 Relume. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Settings</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/contact-scripts.js"></script>
+
+</body>
+</html>
