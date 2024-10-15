@@ -42,6 +42,9 @@ body {
     color: #007bff; /* Blue hover effect */
     stroke: #007bff;
     fill: #007bff;
+    margin-right: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
 }
 
 /* Cart link with icon */
@@ -59,6 +62,13 @@ body {
     align-items: center;
 }
 
+/* Hide the menu icon on desktop */
+.menu-icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
 /* Links styling */
 .navbar-left a {
     margin-right: 20px;
@@ -74,7 +84,6 @@ body {
 
 /* Center logo styling */
 .navbar-center .logo {
-    font-family: 'Cursive', sans-serif;
     font-size: 24px;
     color: #000;
 }
@@ -1387,6 +1396,46 @@ body.popup-open {
 }
 
 
+/* Specific image styles for the About Us page */
+.hero-image {
+    width: 100%;
+    max-width: 700px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.about-image {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 10px;
+}
+
+.feature-image {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 10px;
+}
+
+.team-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.award-logo {
+    width: 100px;
+    margin: 10px;
+}
+
+.footer-logo-img {
+    width: 80px;
+    height: 80px;
+}
+
 /* High-Resolution Laptop: 1920 x 1080 */
 @media only screen and (max-width: 1920px) {
     body {
@@ -1503,5 +1552,49 @@ body.popup-open {
 
     .footer-container {
         flex-direction: column;
+    }
+}
+
+/* Responsive Navbar for Mobile and Tablets */
+@media (max-width: 768px) {
+    .navbar-left a {
+        display: none; /* Hide regular links on mobile */
+    }
+
+    .menu-icon {
+        display: block; /* Show the hamburger icon */
+    }
+
+    .mobile-menu {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #f8f8f8;
+        z-index: 999;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 50px 0;
+    }
+
+    .mobile-menu a {
+        display: block;
+        margin: 20px 0;
+        font-size: 18px;
+        color: #000;
+        text-decoration: none;
+    }
+
+    .mobile-menu a:hover {
+        color: #007bff;
+    }
+
+    /* Show the mobile menu when it's active */
+    .mobile-menu.active {
+        display: flex;
     }
 }
