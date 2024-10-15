@@ -243,8 +243,8 @@ let currentSlide = 0;
 
 function showSlide(index) {
     const slides = document.querySelectorAll('.carousel-item');
-    const translateXValue = -index * 100;
-    carouselItems.style.transform = `translateX(${translateXValue}%)`;
+    carouselItems.style.transition = 'transform 0.5s ease-in-out';
+    carouselItems.style.transform = `translateX(-${index * 100}%)`; // Smooth transition
 }
 
 function nextSlide() {
@@ -257,8 +257,12 @@ function prevSlide() {
     showSlide(currentSlide);
 }
 
-// Automatically change slide every 3 seconds
-setInterval(nextSlide, 3000);
+// Event listeners for next and previous buttons
+document.querySelector('.carousel-next').addEventListener('click', nextSlide);
+document.querySelector('.carousel-prev').addEventListener('click', prevSlide);
 
-// Initialize carousel
+// Auto slide every 3 seconds
+setInterval(nextSlide, 3000); // Change slide every 3 seconds
+
+// Initialize carousel by showing the first slide
 showSlide(currentSlide);
