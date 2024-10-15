@@ -1248,7 +1248,6 @@ body.popup-open {
     background-color: #434a7b;
 }
 
-
 /* Popup background */
 .popup {
     display: none; /* Hidden by default */
@@ -1295,17 +1294,98 @@ body.popup-open {
     color: #333;
 }
 
-/* Responsive Design */
-/* Laptop: 1366 x 768 */
-@media only screen and (max-width: 1366px) {
-    body {
-        font-size: 15px;
-    }
-
-    .container {
-        width: 90%;
-    }
+/* Carousel Section */
+.carousel-section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #fff;
+    position: relative;
 }
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-items {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.carousel-item {
+    flex-shrink: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item img {
+    height: 350px;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 1;
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Controls */
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 1;
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
 
 /* High-Resolution Laptop: 1920 x 1080 */
 @media only screen and (max-width: 1920px) {
