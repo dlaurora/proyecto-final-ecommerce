@@ -115,154 +115,164 @@ window.addEventListener('DOMContentLoaded', function() {
             popup.style.display = 'none';
         }
     });
-});
 
-// Cart items array to store the products added
-let cartItems = [];
+    // Cart items array to store the products added
+    let cartItems = [];
 
-// Function to add a product to the cart
-function addToCart(productName, productPrice, productImage) {
-    const existingProduct = cartItems.find(item => item.name === productName);
+    // Function to add a product to the cart
+    function addToCart(productName, productPrice, productImage) {
+        const existingProduct = cartItems.find(item => item.name === productName);
 
-    if (existingProduct) {
-        existingProduct.quantity += 1;
-    } else {
-        cartItems.push({
-            name: productName,
-            price: productPrice,
-            image: productImage,
-            quantity: 1
-        });
+        if (existingProduct) {
+            existingProduct.quantity += 1;
+        } else {
+            cartItems.push({
+                name: productName,
+                price: productPrice,
+                image: productImage,
+                quantity: 1
+            });
+        }
+
+        updateCartPopup();
     }
 
-    updateCartPopup();
-}
+    // Function to update the cart popup display
+    function updateCartPopup() {
+        const cartItemsContainer = document.querySelector('.cart-items');
+        const cartCount = document.querySelector('.cd-cart__count li:first-child');
 
-// Function to update the cart popup display
-function updateCartPopup() {
-    const cartItemsContainer = document.querySelector('.cart-items');
-    const cartCount = document.querySelector('.cd-cart__count li:first-child');
+        cartItemsContainer.innerHTML = '';
 
-    cartItemsContainer.innerHTML = '';
-
-    cartItems.forEach(item => {
-        const cartItemHTML = `
-            <div class="cart-item">
-                <img src="${item.image}" alt="${item.name}">
-                <div class="item-details">
-                    <h3>${item.name}</h3>
-                    <p class="item-price">$${item.price}</p>
+        cartItems.forEach(item => {
+            const cartItemHTML = `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="item-details">
+                        <h3>${item.name}</h3>
+                        <p class="item-price">$${item.price}</p>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="quantity-btn" onclick="changeQuantity('${item.name}', -1)">-</button>
+                        <input type="number" value="${item.quantity}" class="quantity-input" readonly>
+                        <button class="quantity-btn" onclick="changeQuantity('${item.name}', 1)">+</button>
+                    </div>
+                    <button class="remove-item" onclick="removeFromCart('${item.name}')">×</button>
                 </div>
-                <div class="item-quantity">
-                    <button class="quantity-btn" onclick="changeQuantity('${item.name}', -1)">-</button>
-                    <input type="number" value="${item.quantity}" class="quantity-input" readonly>
-                    <button class="quantity-btn" onclick="changeQuantity('${item.name}', 1)">+</button>
-                </div>
-                <button class="remove-item" onclick="removeFromCart('${item.name}')">×</button>
-            </div>
-        `;
-        cartItemsContainer.insertAdjacentHTML('beforeend', cartItemHTML);
-    });
+            `;
+            cartItemsContainer.insertAdjacentHTML('beforeend', cartItemHTML);
+        });
 
-    cartCount.textContent = cartItems.length;
-    updateCartTotal();
-}
+        cartCount.textContent = cartItems.length;
+        updateCartTotal();
+    }
 
-// Function to change quantity of a product in the cart
-function changeQuantity(productName, change) {
-    const product = cartItems.find(item => item.name === productName);
+    // Function to change quantity of a product in the cart
+    function changeQuantity(productName, change) {
+        const product = cartItems.find(item => item.name === productName);
 
-    if (product) {
-        product.quantity += change;
-        if (product.quantity <= 0) {
-            removeFromCart(productName);
-        } else {
-            updateCartPopup();
+        if (product) {
+            product.quantity += change;
+            if (product.quantity <= 0) {
+                removeFromCart(productName);
+            } else {
+                updateCartPopup();
+            }
         }
     }
-}
 
-// Function to remove a product from the cart
-function removeFromCart(productName) {
-    cartItems = cartItems.filter(item => item.name !== productName);
-    updateCartPopup();
-}
-
-// Function to update the total price in the cart
-function updateCartTotal() {
-    let total = 0;
-    cartItems.forEach(item => {
-        total += item.price * item.quantity;
-    });
-
-    const totalPriceElement = document.querySelector('.total-price p:last-child');
-    const summaryDetailsElement = document.querySelector('.summary-details p:last-child');
-
-    if (totalPriceElement) {
-        totalPriceElement.textContent = '$' + total.toFixed(2);
+    // Function to remove a product from the cart
+    function removeFromCart(productName) {
+        cartItems = cartItems.filter(item => item.name !== productName);
+        updateCartPopup();
     }
 
-    if (summaryDetailsElement) {
-        summaryDetailsElement.textContent = '$' + total.toFixed(2);
-    }
-}
+    // Function to update the total price in the cart
+    function updateCartTotal() {
+        let total = 0;
+        cartItems.forEach(item => {
+            total += item.price * item.quantity;
+        });
 
-// Populate products from online mock data
-window.addEventListener('DOMContentLoaded', function() {
+        const totalPriceElement = document.querySelector('.total-price p:last-child');
+        const summaryDetailsElement = document.querySelector('.summary-details p:last-child');
+
+        if (totalPriceElement) {
+            totalPriceElement.textContent = '$' + total.toFixed(2);
+        }
+
+        if (summaryDetailsElement) {
+            summaryDetailsElement.textContent = '$' + total.toFixed(2);
+        }
+    }
+
+    // Populate products from online mock data
     const productsGrid = document.querySelector('.products-grid');
+    if (!productsGrid) {
+        console.error('Error: .products-grid element not found in the DOM.');
+    } else {
+        fetch('https://fakestoreapi.com/products')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(product => {
+                    const productHTML = `
+                        <div class="product-item">
+                            <img src="${product.image}" alt="${product.title}">
+                            <h3>${product.title}</h3>
+                            <p class="price">$${product.price}</p>
+                            <p class="description">${product.description}</p>
+                            <a href="#" class="btn-primary" onclick="addToCart('${product.title}', ${product.price}, '${product.image}')">Add to Cart</a>
+                        </div>
+                    `;
+                    productsGrid.insertAdjacentHTML('beforeend', productHTML);
+                });
+            })
+            .catch(error => console.error('Error fetching products:', error));
+    }
 
-    fetch('https://fakestoreapi.com/products')
-        .then(response => response.json())
-        .then(data => {
-            data.forEach(product => {
-                const productHTML = `
-                    <div class="product-item">
-                        <img src="${product.image}" alt="${product.title}">
-                        <h3>${product.title}</h3>
-                        <p class="price">$${product.price}</p>
-                        <p class="description">${product.description}</p>
-                        <a href="#" class="btn-primary" onclick="addToCart('${product.title}', ${product.price}, '${product.image}')">Add to Cart</a>
-                    </div>
-                `;
-                productsGrid.insertAdjacentHTML('beforeend', productHTML);
-            });
-        })
-        .catch(error => console.error('Error fetching products:', error));
+    // Carousel logic for 20 images from the folder
+    const carouselItems = document.querySelector('.carousel-items');
+    if (!carouselItems) {
+        console.error('Error: .carousel-items element not found in the DOM.');
+    } else {
+        const images = [...Array(20)].map((_, i) => `assets/images/carousel/${i + 1}.png`);
+
+        images.forEach(imgSrc => {
+            const imgHTML = `<div class="carousel-item"><img src="${imgSrc}" alt="Carousel Image"></div>`;
+            carouselItems.insertAdjacentHTML('beforeend', imgHTML);
+        });
+
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-item');
+            carouselItems.style.transition = 'transform 0.5s ease-in-out';
+            carouselItems.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % images.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + images.length) % images.length;
+            showSlide(currentSlide);
+        }
+
+        // Event listeners for next and previous buttons
+        const nextButton = document.querySelector('.carousel-next');
+        const prevButton = document.querySelector('.carousel-prev');
+
+        if (nextButton && prevButton) {
+            nextButton.addEventListener('click', nextSlide);
+            prevButton.addEventListener('click', prevSlide);
+        }
+
+        // Auto slide every 3 seconds
+        setInterval(nextSlide, 3000); // Change slide every 3 seconds
+
+        // Initialize carousel by showing the first slide
+        showSlide(currentSlide);
+    }
 });
-
-// Carousel logic for 20 images from the folder
-const carouselItems = document.querySelector('.carousel-items');
-const images = [...Array(20)].map((_, i) => `assets/images/carousel/${i + 1}.png`);
-
-images.forEach(imgSrc => {
-    const imgHTML = `<div class="carousel-item"><img src="${imgSrc}" alt="Carousel Image"></div>`;
-    carouselItems.insertAdjacentHTML('beforeend', imgHTML);
-});
-
-let currentSlide = 0;
-
-function showSlide(index) {
-    const slides = document.querySelectorAll('.carousel-item');
-    carouselItems.style.transition = 'transform 0.5s ease-in-out';
-    carouselItems.style.transform = `translateX(-${index * 100}%)`; // Smooth transition
-}
-
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % images.length;
-    showSlide(currentSlide);
-}
-
-function prevSlide() {
-    currentSlide = (currentSlide - 1 + images.length) % images.length;
-    showSlide(currentSlide);
-}
-
-// Event listeners for next and previous buttons
-document.querySelector('.carousel-next').addEventListener('click', nextSlide);
-document.querySelector('.carousel-prev').addEventListener('click', prevSlide);
-
-// Auto slide every 3 seconds
-setInterval(nextSlide, 3000); // Change slide every 3 seconds
-
-// Initialize carousel by showing the first slide
-showSlide(currentSlide);
