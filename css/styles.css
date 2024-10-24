@@ -1388,6 +1388,152 @@ right:.625rem
 background-color:#000000b3
 }
 
+
+/* FAQs Header Section */
+.faqs-header {
+    background: url('../images/faqs-header.jpg') no-repeat center center/cover;
+    height: 50vh;
+    position: relative;
+    color: #fff;
+}
+
+.faqs-header .overlay {
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.faqs-header h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+}
+
+.faqs-header p {
+    font-size: 1.2em;
+}
+
+/* FAQs Header Section */
+.faqs-header {
+    background: url('../assets/images/faqsbanner.jpg') no-repeat center center/cover;
+    height: 60vh;
+    position: relative;
+    color: #fff;
+}
+
+.faqs-header .overlay {
+    background: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.faqs-header .container {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.faqs-header h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+}
+
+.faqs-header p {
+    font-size: 1.2em;
+}
+
+/* FAQ Section */
+.faq-section {
+    padding: 4em 0;
+}
+
+.faq-section h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+
+.faq {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 1em;
+    border-bottom: 0.0625rem solid #eaeaea;
+    position: relative;
+}
+
+.faq-item input[type="checkbox"] {
+    display: none;
+}
+
+.faq-question {
+    display: block;
+    width: 100%;
+    font-size: 1.2em;
+    padding: 1em 0;
+    cursor: pointer;
+    color: #333;
+    position: relative;
+    font-weight: bold;
+}
+
+.faq-question::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    font-size: 1.5em;
+    color: #ff6b6b;
+    transition: transform 0.3s;
+}
+
+.faq-item input[type="checkbox"]:checked + .faq-question::after {
+    content: '-';
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-item input[type="checkbox"]:checked ~ .faq-answer {
+    max-height: 1000px; /* Adjust as needed based on content length */
+}
+
+.faq-answer p,
+.faq-answer ul,
+.faq-answer h4 {
+    padding: 0 0 1em 0;
+    color: #666;
+}
+
+.faq-answer ul {
+    list-style: disc;
+    padding-left: 1.5em;
+}
+
+.faq-answer a {
+    color: #ff6b6b;
+    text-decoration: none;
+}
+
+.faq-answer a:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 768px) {
 .navbar-left a {
 display:none
