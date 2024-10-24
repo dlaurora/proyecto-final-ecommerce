@@ -46,7 +46,7 @@ proyecto-final-ecommerce/
 
 ### Product Page
 
-![Product Page Screenshot](assets/images/screenshots/screenprod.png)
+![Product Page Screenshot](assets/images/screenprod.png)
 
 
 ### WORK IN PROGRESS
