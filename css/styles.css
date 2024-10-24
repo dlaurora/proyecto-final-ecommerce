@@ -1575,3 +1575,22 @@ color:#007bff
 display:flex
 }
 }
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .parent {
+        grid-template-columns: repeat(3, 1fr); /* Adjust to 3 columns on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .parent {
+        grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .parent {
+        grid-template-columns: 1fr; /* Stack items in a single column for mobile */
+    }
+}
