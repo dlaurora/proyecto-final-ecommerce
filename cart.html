@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>FAQs - E-Commerce Site</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Shopping Cart</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-9fm/OY0vD8F0y8e4+uwakJ2hVLL5ct6StXuqB+sn33QyfKgDFVr4M+J8vCqVYC3FhZPCt/E6Iv0anPiI4EhL6w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -47,51 +47,34 @@
         <a href="faqs.html">FAQs</a>
     </div>
 
-    <header class="faqs-header">
-        <div class="overlay">
-            <div class="container">
-                <h1>Frequently Asked Questions</h1>
-                <p>Find answers to the most common queries</p>
+    <main class="cart-section">
+        <div class="cart-container">
+            <div class="cart-items">
+                <h1>Your Shopping Cart</h1>
+                <div id="cart-items-list"></div>
+                <a href="shop.html" class="back-to-shop">← Back to shop</a>
+            </div>
+
+            <div class="cart-summary">
+                <h2>Summary</h2>
+                <div class="summary-details" id="cart-summary"></div>
+                <div class="shipping-options">
+                    <label for="shipping">SHIPPING</label>
+                    <select id="shipping">
+                        <option value="standard-5">Standard-Delivery - $5.00</option>
+                        <option value="express-10">Express-Delivery - $10.00</option>
+                    </select>
+                </div>
+                <div class="give-code">
+                    <label for="discount-code">GIVE CODE</label>
+                    <input type="text" id="discount-code" placeholder="Enter your code">
+                    <button type="button" onclick="applyDiscount()">→</button>
+                </div>
+                <div class="total-price" id="total-price"></div>
+                <button class="checkout-btn" onclick="checkout()">CHECKOUT</button>
             </div>
         </div>
-    </header>
-
-    <section class="faq-section">
-        <div class="container">
-            <h2>How can we help you?</h2>
-            <div class="faq">
-                <div class="faq-item">
-                    <input type="checkbox" id="faq1">
-                    <label for="faq1" class="faq-question">
-                        What is your return policy?
-                    </label>
-                    <div class="faq-answer">
-                        <p>We offer a 30-day return policy on all items...</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <input type="checkbox" id="faq2">
-                    <label for="faq2" class="faq-question">
-                        Do you offer international shipping?
-                    </label>
-                    <div class="faq-answer">
-                        <p>Yes, we offer international shipping to select countries...</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <input type="checkbox" id="faq3">
-                    <label for="faq3" class="faq-question">
-                        How can I track my order?
-                    </label>
-                    <div class="faq-answer">
-                        <p>Once your order has been shipped, you will receive a confirmation email containing your tracking number and a link...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <footer class="footer-section">
         <div class="footer-container">

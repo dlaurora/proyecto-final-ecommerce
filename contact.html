@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Contact Us - E-Commerce Site</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-9fm/OY0vD8F0y8e4+uwakJ2hVLL5ct6StXuqB+sn33QyfKgDFVr4M+J8vCqVYC3FhZPCt/E6Iv0anPiI4EhL6w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
-    <!-- Navbar Section -->
     <nav class="navbar">
         <div class="navbar-left">
+            <button class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
             <a href="index.html">Home Page</a>
             <a href="shop.html">Shop Now</a>
             <a href="contact.html">Contact Us</a>
@@ -22,18 +22,30 @@
         </div>
         <div class="navbar-right">
             <a href="cart.html" class="cart-link">
-                <!-- Cart Icon (SVG) -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                     class="feather feather-shopping-cart">
                     <circle cx="9" cy="21" r="1"></circle>
                     <circle cx="20" cy="21" r="1"></circle>
-                    <path d="M1 1h4l2.68 12.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    <path d="M1 1h4l2.68 12.39a2 2 0 
+                             0 0 2 1.61h9.72a2 2 
+                             0 0 0 2-1.61L23 6H6"></path>
                 </svg>
-                <span>Cart</span>
+                <span>Cart-</span>
+                <span class="cart-count">0</span>
             </a>
         </div>
     </nav>
 
-    <!-- Contact Form Section -->
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="index.html">Home Page</a>
+        <a href="shop.html">Shop Now</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="about.html">About Us</a>
+        <a href="faqs.html">FAQs</a>
+    </div>
+
     <div class="container-form">
         <main class="main-wrapper">
             <div class="form-container">
@@ -49,7 +61,7 @@
                         <label for="message">Add your comments</label>
                         <textarea rows="5" name="message" id="message" placeholder="Leave us your comments..." required></textarea>
                         
-                        <input type="hidden" name="_subject" id="email-subject" value="Contacto">
+                        <input type="hidden" name="_subject" value="Contacto">
                     </fieldset>
                     <input type="submit" value="Send" class="btn-submit">
                 </form>
@@ -57,7 +69,6 @@
         </main>
     </div>
 
-    <!-- Footer Section -->
     <footer class="footer-section">
         <div class="footer-container">
             <div class="footer-logo">
@@ -81,7 +92,6 @@
             </div>
         </div>
 
-        <!-- Popup Modal -->
         <div id="popup" class="popup">
             <div class="popup-content">
                 <span id="popup-close" class="popup-close">&times;</span>
@@ -91,11 +101,12 @@
         
         <div class="footer-bottom">
             <p>© 2024 DML. All rights reserved.</p>
-            <div class="footer-bottom-links">
+            <div class="footer-bottom-links"></div>
         </div>
     </footer>
 
-    <script src="js/contact-scripts.js"></script>
+    <div id="popup-message" class="popup-message"></div>
 
+    <script src="js/script.js"></script>
 </body>
 </html>
